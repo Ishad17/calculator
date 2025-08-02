@@ -27,7 +27,7 @@ console.log(operate(80,'*',50));
 
 
 
-        const buttons = document.querySelectorAll(".num");
+        const buttons = document.querySelectorAll(".btn");
         const buttonsOperator = document.querySelectorAll(".opt");
         const container = document.getElementById("display-container");
         const clearButton = document.getElementById("btn-clear");
@@ -35,6 +35,19 @@ console.log(operate(80,'*',50));
         buttons.forEach(button => 
            
         button.addEventListener("click", function() {   
+
+            if( this.classList.contains("opt") ){
+                console.log("your!")
+                const operator = document.createElement("display-opt");
+                operator.style.padding = "10px";
+                operator.style.margin = "10px 0";
+                operator.style.backgroundColor = "#1b426bff";
+                
+                operator.textContent = button.textContent;
+                container.appendChild(operator);
+                return;
+
+            }
 
                 //    container.textContent = button.textContent;
                    container.textContent += button.textContent; 
@@ -72,6 +85,9 @@ console.log(operate(80,'*',50));
 
 let operator;
 let num2;
+
+
+
 
 // function subtract(a, b) {
 //     return a - b;
