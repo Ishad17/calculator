@@ -1,12 +1,12 @@
 body{
-    background-color: rgb(9, 36, 63);
+    background-color: rgb(219, 200, 147);
 }
 h2{
     padding: 20px;
-    background: rgb(226, 194, 134);
+    background: rgb(141, 86, 65);
     font-size: 2em;
-    width: 44%;
-    color: #333;
+    width: 90%;
+    color: #ffffff;
     font-family: Arial, sans-serif;
 }
 
@@ -15,12 +15,29 @@ h2{
     width: 540px;
     height: 100px;
     display: flex;
-    flex-direction: row-reverse;
+    color: rgb(156, 44, 44);
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    font-size:50px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;   
+}
+
+#display-num{
+     width: 10px;
+     height: 10px;
+     color: rgb(156, 44, 44);
+     border-radius: 5px;
+     margin: 5px;
+
+     font-weight: 600;
 }
 
 .calculator{
     padding:50px;
-    background: #014f7f;
+    background: #4a7e35;
     width: 520px;
     height:600px;
     margin: 10px;
@@ -30,7 +47,7 @@ h2{
     width: 120px;
     height: 120px;
     margin: 5px;
-    font-size: x-large;
+    font-size: xx-large;
     background-color: #00395d;
     color: #ffffff;
 }
