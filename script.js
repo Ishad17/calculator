@@ -36,15 +36,12 @@ console.log(operate(80,'*',50));
            
         button.addEventListener("click", function() {   
 
+        const operator = document.querySelectorAll(".display-opt");
+
             if( this.classList.contains("opt") ){
                 console.log("your!")
-                const operator = document.createElement("display-opt");
-                operator.style.padding = "10px";
-                operator.style.margin = "10px 0";
-                operator.style.backgroundColor = "#1b426bff";
-                
+                               
                 operator.textContent = button.textContent;
-                container.appendChild(operator);
                 return;
 
             }
