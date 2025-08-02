@@ -61,3 +61,10 @@ h2{
     display: flex;
     flex-wrap: wrap;
 }
+
+
+.display-opt{
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #1b426bff;
+}
