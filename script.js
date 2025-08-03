@@ -25,135 +25,73 @@ function operate(num1, operator, num2 ) {
 
 console.log(operate(80,'*',50));
 
-
-
         const buttons = document.querySelectorAll(".btn");
         const buttonsOperator = document.querySelectorAll(".opt");
-        const container = document.getElementById("display-container");
+        const buttonsNumber = document.querySelectorAll(".num");
+        const containerNum =  document.getElementById("display-num");
+        const containerOpt =  document.getElementById("display-opt");
         const clearButton = document.getElementById("btn-clear");
+
+
+                let value1;
+                let value2;
+                let operator;
 
         buttons.forEach(button => 
            
-        button.addEventListener("click", function() {   
+            button.addEventListener("click", function() {   
 
-        const operator = document.querySelectorAll(".display-opt");
+                // console.log(operator);
 
-            if( this.classList.contains("opt") ){
-                console.log("your!")
-                               
-                operator.textContent = button.textContent;
-                return;
+                if(operator){
+                        if(!value2){
+                            document.getElementById("display-num").innerHTML = "";
+                        }
 
-            }
-
-                //    container.textContent = button.textContent;
-                   container.textContent += button.textContent; 
-                   console.log(typeof button.textContent);
-                   let value1 = container.textContent;   
-                   
-                   console.log(container.textContent);
-                  
-
-                    // let num1 = button.textContent; 
-
-                    // const displayValue = document.getElementById("#display-container")
-                        
-                    // button.style.backgroundColor = "rgba(1, 60, 255, 1)";
-                    // setTimeout(() => {
-                    //     button.style.backgroundColor = ""; // resets to default or previous style
-                    // }, 200);
-
-            })
-            
-        );
-        
-
-        clearButton.addEventListener("click" , function() {
-        document.getElementById("display-container").innerHTML = "";
-        console.clear();
-                      
-            this.style.backgroundColor = 'rgba(184, 0, 0, 1)'
-             setTimeout(() => {
-                        this.style.backgroundColor = ""; // resets to default or previous style
-                    }, 200);
-                return 2;
-        });
+                        containerNum.textContent += button.textContent; 
+                        value2 = containerNum.textContent + ': Value2';   
+                        value2 = parseInt(value2);
+                        }
 
 
-let operator;
-let num2;
+                    if(this.classList.contains("opt") ){
+                        // document.getElementById("display-num").innerHTML = "";
+                            operator = containerOpt.textContent = button.textContent;
+                            // console.log(operator);
+                        //     console.log(typeof operator);
 
+                        // console.log(value1)
 
-
-
-// function subtract(a, b) {
-//     return a - b;
-// }
-// function multiply(a, b) {
-//     return a * b;
-// }
-// function divide(a, b) {
-//     if (b === 0) {
-//     return "ERROR"
-//     }
-//     return a / b;
-// }
-
-
-
-                    // if(operator == '+' ) {
-                    //     value = (num1 + num2);
-                    //     return value
-                    // }else if(operator == '-'){
-                    //     value = num1 - num2;
-                    //     return value;
-                    // }else if(operator == '%') {
-                    //     value = num1 % num2;
-                    //     return value;
-                    // }else if(operator == '*') {
-                    //     value = num1 * num2;
-                    //     return value;
-                    // } 
-                    // if(operator == '/' && num2 != 0) {
-                    //     value = num1 / num2;
-                    //     return value;
-                    // }else if (operator == '/' && num2 === 0){
-                    //         return 'ERROR'
-                    // }
-
-
-
-
+                    }else if(this.classList.contains("num") && !(value2) ){
+                        containerNum.textContent += button.textContent; 
+                        value1 = containerNum.textContent + ': Value1';   
+                        value1 = parseInt(value1);
+                        console.log('value1 : ' + value1);
                     
-        // const buttonsNum = document.querySelectorAll(".num");
-        // const buttonsOperator = document.querySelectorAll(".opt");
-        // const container = document.getElementById("display-container");
-        // const clearButton = document.getElementById("btn-clear");
+                    }else if(this.classList.contains("clear") ){
+                            document.getElementById("display-num").innerHTML = "";
+                            document.getElementById("display-opt").innerHTML = "";
+                              value1 = '';
+                                value2 = '';
+                                operator = '';                           
+                            console.clear();        
+                    }
 
-        // buttonsNum.forEach(buttonNum =>
+                         if(this.classList.contains("equal")){
+                            containerOpt.textContent = button.textContent;
+                            console.log("val 1 : " + value1);
+                            console.log("val 2 : " + value2);
+                            console.log(operate(value1,operator,value2));
 
-        // buttonNum.addEventListener("click", function() {
-            
+                            document.getElementById("display-num").innerHTML = `${operate(value1,operator,value2)}`;
+                            return;
+                         }
+                    
+                
+                })
+        );
 
-        //         //    container.textContent = button.textContent;
-        //            container.textContent += buttonNum.textContent; 
-        //            console.log(typeof buttonNum.textContent);
-        //            let value1 = container.textContent;   
-        //         //    return value1;
-        //            console.log(container.textContent);
 
-                   
-                  
+        // operate(value1, operator, value2 )
 
-        //             // let num1 = button.textContent; 
-
-        //             // const displayValue = document.getElementById("#display-container")
-                        
-        //             // button.style.backgroundColor = "rgba(1, 60, 255, 1)";
-        //             // setTimeout(() => {
-        //             //     button.style.backgroundColor = ""; // resets to default or previous style
-        //             // }, 200);
-
-        //     })
-            
-        // );
+        
