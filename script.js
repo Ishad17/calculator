@@ -2,6 +2,10 @@ console.log( "hello world!")
 
 function operate(value1, operator, value2 ) {
     
+    if(!value2){
+           return value1;
+        }
+
     if(operator == '+' ) {
         value1 = value1 + value2;
         return value1
@@ -112,6 +116,8 @@ function operate(value1, operator, value2 ) {
                 }
 
                 if(this.classList.contains("equal")){
+
+                    
                     total = operate(value1,operator,value2);
                     console.log(total)
                     console.log("val 1 : " + value1);
