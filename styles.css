@@ -38,11 +38,16 @@ h2{
      flex-direction: column;
      font-weight: 200;
      font-size: 35px;
-     background-color: #dbb181;
+     /* background-color: #dbb181; */
+}
+
+#result{
+    /* background-color: #dbb181;  */
+    padding: 10px; margin-right: 20px ;height: 50px; font-size: 25px;color: rgba(4, 38, 82, 0.493);
 }
 
 #display-num{
-    background: #ef1f1f;
+    /* background: #ef1f1f; */
      /* width: 200px; */
      height: 50px;
      color: rgb(4, 38, 82);
