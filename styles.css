@@ -4,7 +4,7 @@ body{
 h2{
     display: flex;
     margin: auto;
-    font-size: 4em;
+    font-size: 3em;
     width: 90%;
     color: #ffffff;
     font-family: Arial, sans-serif;
@@ -12,8 +12,9 @@ h2{
 }
 
 .bright {
-  filter: brightness(1.5); /* 1 is normal, >1 is brighter */
-  transition: filter 0.3s ease;
+  filter: brightness(1.4); /* 1 is normal, >1 is brighter */
+  transition: filter 0.1s ease;
+  scale: 1.1;
 }
 
 #display-container{
@@ -85,7 +86,7 @@ h2{
 .calculator{
     /* flex: 1; */
     padding:30px;
-    background: #4a4a4a;
+    background: #2c2c2c;
     width: 260px;
     height:330px;
     margin: auto;
@@ -97,7 +98,7 @@ h2{
     margin: 5px;
     padding: 2px;
     font-size: large;
-    background-color: #00395d;
+    background-color: #4a4a4b;
     color: #ffffff;
     border-radius: 8px;
 }
