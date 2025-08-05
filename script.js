@@ -106,6 +106,10 @@ function operate(value1, operator, value2 ) {
 
                 if(this.classList.contains("opt")){
 
+                    if(equal == true){
+                            resultDisplay.innerHTML = `= ${total}`;
+                    }
+
                     // if ( operator == button.textContent){
                     //     console.log("yess it contains!!");
                     //     resultDisplay.textContent = containerNum.textContent; 
@@ -123,6 +127,9 @@ function operate(value1, operator, value2 ) {
                 }
 
                 if(this.classList.contains("equal")){
+
+                    equal = true; 
+
                     total = operate(value1,operator,value2);
                        console.log(total)
                     // console.log("val 1 : " + value1);
