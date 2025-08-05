@@ -47,7 +47,10 @@ function operate(value1, operator, value2 ) {
            
             button.addEventListener("click", function() {
 
-
+                    this.classList.add("bright");
+                    setTimeout(() => {
+                        this.classList.remove("bright");
+                    }, 200); // Revert after 300ms
 
                 // if(containerOpt.textContent == button.textContent ){
                 //     return;
@@ -125,9 +128,11 @@ function operate(value1, operator, value2 ) {
                     console.log(operator);
                     // resultDisplay.textContent = containerNum.textContent; 
                     containerNum.innerHTML = ""; 
-                    resultDisplay.innerHTML = `${total}`;
+                    containerOpt.innerHTML = ""; 
+                    resultDisplay.innerHTML = `= ${total}`;
 
-                    containerOpt.textContent = button.textContent
+
+                    // containerOpt.textContent = button.textContent
                     // equal = true;
                     // value1 = '';
                     //         value2 = '';
@@ -147,7 +152,13 @@ function operate(value1, operator, value2 ) {
                             location.reload();
                 }
 
+
+
+
+
                 })
+
+                
         );
 
 
