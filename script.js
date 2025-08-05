@@ -47,10 +47,7 @@ function operate(value1, operator, value2 ) {
             
             button.addEventListener("click", function() {
 
-                console.log(button.textContent);
-
-
-                // operator = button.textContent;
+                
 
                     this.classList.add("bright");
                     setTimeout(() => {
@@ -97,7 +94,7 @@ function operate(value1, operator, value2 ) {
                         // console.log('value2 : ' + value2);
                     }
 
-                if((this.classList.contains("num")) && !value2){
+                if((this.classList.contains("num")) && !operator){
                     // if(!value1){
                     //      containerNum.innerHTML = "";
                     // }                     
@@ -108,7 +105,7 @@ function operate(value1, operator, value2 ) {
                 }
 
                 if(this.classList.contains("opt")){
-                    // total = null;
+
                     // if ( operator == button.textContent){
                     //     console.log("yess it contains!!");
                     //     resultDisplay.textContent = containerNum.textContent; 
@@ -126,10 +123,6 @@ function operate(value1, operator, value2 ) {
                 }
 
                 if(this.classList.contains("equal")){
-
-                    if(total){
-                        return;
-                    }
                     total = operate(value1,operator,value2);
                        console.log(total)
                     // console.log("val 1 : " + value1);
