@@ -41,82 +41,56 @@ function operate(value1, operator, value2 ) {
         let value2;
         let operator;
         let total;
-        let equal;
+        let equal = false;
+        let operator2 = false;
 
         buttons.forEach(button => 
             
             button.addEventListener("click", function() {
 
-                
 
-                    this.classList.add("bright");
-                    setTimeout(() => {
-                        this.classList.remove("bright");
-                    }, 200);        // Revert after 200ms
-                // if(containerOpt.textContent == button.textContent ){
-                //     return;
-                // }
-                //     equal = false;
-                //     console.log('value2 : ' + value2);
-                //     console.log('value1 : ' + value1);
-                //     console.log('total : ' + total);
+
                 if(value2 && this.classList.contains("opt") ){ 
 
-                    
-                    // value2 = 0;
-                    console.log("hello?");
-                    // containerNum.innerHTML = button.textContent;
+                    if(operator2 == true){
+                        console.log("hello? 2 ");
+                        return;
+                    }
+
+                  
                     value2 = parseInt(value2);
-                    // value2 = containerNum.textContent;                      
-                    containerOpt.textContent = button.textContent;                // 14 + 25  = 39
-                    // operator = containerOpt.textContent;                       // 39 + 17  = 56
-                    // console.log(operator);                                     // 56 + 20  = 76
-                    value1 = operate(value1, operator, value2 );                  // 76 + 11  = 87
-                    // total = operate(value1,operator,value2);
-                    containerNum.innerHTML = `${value1}`;
+                    containerOpt.textContent = button.textContent;     // 14 + 25  = 39
+                    value1 = operate(value1, operator, value2 );       // 39 + 17  = 56
+                    containerNum.innerHTML = `${value1}`;              // 56 + 20  = 76
+                                                                       // 76 + 11  = 87                   
                 }
-                // if(this.classList.contains("num") && value1 && value2){
-                //       containerNum.innerHTML = "";
-                // }
-                // if(operator && value1 && value2 && (this.classList.contains("num"))){
-                //     console.log("Is it...???")
-                //      containerNum.innerHTML = "";
-                // }                
                     if(operator && (this.classList.contains("num"))){
-                        // console.log("so...??")
-                        if(!value2){
+                         if(!value2){
                                 containerNum.innerHTML = "";
-                                //  console.log("clear")
                         }
                         containerNum.textContent += button.textContent; 
                         value2 = containerNum.textContent;                                        /// value 1 
                         value2 = parseInt(value2);
                         // console.log('value2 : ' + value2);
+                          console.log("helloooo?");
+                          operator2 = false;
                     }
 
-                if((this.classList.contains("num")) && !operator){
-                    // if(!value1){
-                    //      containerNum.innerHTML = "";
-                    // }                     
+                if((this.classList.contains("num")) && !operator){                   
                     containerNum.textContent += button.textContent; 
                         value1 = containerNum.textContent;                                        /// value 1 
                         value1 = parseInt(value1);
-                        // console.log('value1 : ' + value1);
+                          console.log("hello?");
+                                                    operator2 = false;
                 }
 
                 if(this.classList.contains("opt")){
-
+                    operator2 = true;
+                    resultDisplay.innerHTML = `= ${total}`;
                     if(equal == true){
+                        console.log("true")
                             resultDisplay.innerHTML = `= ${total}`;
                     }
-
-                    // if ( operator == button.textContent){
-                    //     console.log("yess it contains!!");
-                    //     resultDisplay.textContent = containerNum.textContent; 
-                    //     containerNum.innerHTML = ""; 
-                    //     return;
-                    // }
-
                     resultDisplay.textContent = containerNum.textContent; 
                     containerNum.innerHTML = ""; 
                     // console.log("mmhm?");
@@ -127,42 +101,23 @@ function operate(value1, operator, value2 ) {
                 }
 
                 if(this.classList.contains("equal")){
-
                     equal = true; 
-
                     total = operate(value1,operator,value2);
-                       console.log(total)
-                    // console.log("val 1 : " + value1);
-                    // console.log("val 2 : " + value2);
-                    // console.log(operator);
-                    // resultDisplay.textContent = containerNum.textContent; 
+                    console.log(total)
                     containerNum.innerHTML = ""; 
                     containerOpt.innerHTML = ""; 
                     resultDisplay.innerHTML = `= ${total}`;
-                    // containerOpt.textContent = button.textContent
-                    // equal = true;
-                    // value1 = '';
-                    //         value2 = '';
-                    //         operator = '';                           
-                    //         console.clear();
-                    //         return;        
                  }
-                // if((equal) || this.classList.contains("clear") ){
+                 
                 if(this.classList.contains("clear") ){
-                            // containerNum.innerHTML = "";
-                            // containerOpt.innerHTML = "";
-                            // value1 = '';
-                            // value2 = '';
-                            // operator = '';                           
-                            // console.clear();                   
                             location.reload();
                 }
-                        // console.log("value 1 : " + value1);
-                        // console.log("v 2 : " + value2);
-                        // console.log("Operator is : " + operator);
-                })
-
-                
+                       
+                 this.classList.add("bright");
+                    setTimeout(() => {
+                        this.classList.remove("bright");
+                    }, 200);        // Revert after 200ms               
+                })                
         );
 
 
