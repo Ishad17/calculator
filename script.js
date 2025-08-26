@@ -3,6 +3,7 @@ console.log( "MY CALCULATOR!")
 function operate(value1, operator, value2 ) {
     
     if(!value2){
+        console.log("console !Value2")
            return value1;
         }
 
@@ -10,7 +11,7 @@ function operate(value1, operator, value2 ) {
         value1 = value1 + value2;
         return value1
     }else if(operator == '-'){
-        value1 = value1 - value2;
+        value1 = value2 - value1;
         return value1;
     }else if(operator == '%') {
         value1 = value1 % value2;
@@ -48,6 +49,12 @@ function operate(value1, operator, value2 ) {
             
             button.addEventListener("click", function() {
 
+                // if(operator2){
+                //      let okk = operate(value1,operator,value2);
+                //     console.log(okk + 'thiis is the okk');
+                //     return;
+                // }
+
                 this.classList.add("bright");
                     setTimeout(() => {
                         this.classList.remove("bright");
@@ -56,11 +63,14 @@ function operate(value1, operator, value2 ) {
                 if(this.classList.contains("opt")){
                     
                     operator = button.textContent;
+                    containerOpt.textContent = button.textContent;
+
                     if(operator2){
+                        console.log("opertor 2 is true!")
                         return;
                     }
                     operator2 = true;
-                    operator = button.textContent;
+                  //  operator = button.textContent;
                     if(equal){
                         console.log("equal is true!")
                         containerOpt.textContent = button.textContent;
@@ -70,7 +80,7 @@ function operate(value1, operator, value2 ) {
                     }
                     containerOpt.textContent = button.textContent;
                     value1 = operate(value1,operator,value2);
-                    console.log(total)
+                    // console.log(total)
                     resultDisplay.innerHTML = `${value1}`;
                     value2 = value1;
                     containerNum.innerHTML = "";
@@ -116,12 +126,13 @@ function operate(value1, operator, value2 ) {
                     if(equal){
                         return;
                     }
-                    equal = true; 
+                    equal = true;
                     value2 = operate(value1,operator,value2);
                     console.log(value2)
                     containerNum.innerHTML = ""; 
                     containerOpt.innerHTML = ""; 
                     resultDisplay.innerHTML = `= ${value2}`;
+                    operator = null;
                  }
                  
                 if(this.classList.contains("clear") ){
