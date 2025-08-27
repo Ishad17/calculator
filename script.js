@@ -16,7 +16,7 @@ function operate(value1, operator, value2 ) {
         value1 = value1 * value2;
         return value1;
     }else if(operator == '%'){
-        console.log('percentage?')
+
         value1 = value2 * value1/100;
         console.log(value1);
         return value1; 
@@ -26,7 +26,7 @@ function operate(value1, operator, value2 ) {
         return value1;
 
     }else if (operator == '÷' && value1 === 0){
-            alert(`Don't ever try to divide by "0"`)
+            alert(`EERRROORRRR!!!!!! Don't ever try to divide by "0"`)
             location.reload();
     }
 }
