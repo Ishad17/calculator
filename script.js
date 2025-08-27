@@ -20,10 +20,11 @@ function operate(value1, operator, value2 ) {
         value1 = value1 * value2;
         return value1;
     } 
-    if(operator == '/' && value2 != 0) {
-        value1 = value1 / value2;
+    if(operator == '÷' && value2 != 0) {
+        value1 = value2 / value1;
         return value1;
-    }else if (operator == '/' && value2 === 0){
+
+    }else if (operator == '÷' && value1 === 0){
             return 'ERROR'
     }
 }
@@ -45,16 +46,14 @@ function operate(value1, operator, value2 ) {
         let equal = false;
         let operator2 = false;
 
+        console.log()
+
         buttons.forEach(button => 
             
             button.addEventListener("click", function() {
-
-                // if(operator2){
-                //      let okk = operate(value1,operator,value2);
-                //     console.log(okk + 'thiis is the okk');
-                //     return;
-                // }
-
+                
+                let text =  button.textContent;
+                             
                 this.classList.add("bright");
                     setTimeout(() => {
                         this.classList.remove("bright");
@@ -62,25 +61,23 @@ function operate(value1, operator, value2 ) {
 
                 if(this.classList.contains("opt")){
                     
-                    operator = button.textContent;
-                    containerOpt.textContent = button.textContent;
+                    operator = text;
+                    containerOpt.textContent = text;
 
                     if(operator2){
-                        console.log("opertor 2 is true!")
                         return;
                     }
                     operator2 = true;
-                  //  operator = button.textContent;
+              
                     if(equal){
-                        console.log("equal is true!")
-                        containerOpt.textContent = button.textContent;
+                        containerOpt.textContent = text;
                         resultDisplay.innerHTML = `${value2}`;
                         operator2 = true;
                         return;
                     }
-                    containerOpt.textContent = button.textContent;
+                    containerOpt.textContent = text;
                     value1 = operate(value1,operator,value2);
-                    // console.log(total)
+                  
                     resultDisplay.innerHTML = `${value1}`;
                     value2 = value1;
                     containerNum.innerHTML = "";
@@ -90,15 +87,17 @@ function operate(value1, operator, value2 ) {
                 if(this.classList.contains("num")){
                     operator2 = false;
                     equal = false;
+
+                 
                     if(operator){
-                        containerNum.textContent += button.textContent; 
+                        containerNum.textContent +=text; 
                         value1 = containerNum.textContent;                                        /// value 1 
                         value1 = parseInt(value1);
                         console.log("value1 : " + value1);
                         return;
                     }
 
-                    containerNum.textContent += button.textContent; 
+                        containerNum.textContent +=text; 
                         value1 = containerNum.textContent;                                        /// value 1 
                         value1 = parseInt(value1);
                         console.log(value1);
