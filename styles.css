@@ -1,14 +1,35 @@
-body{
-    background-color: rgb(216, 206, 185);
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #868686, #1f1f1f);
+    animation: pulse 6s infinite ease-in-out;
+    z-index: -1;
 }
-h2{
-    display: flex;
-    margin: auto;
-    font-size: 3em;
-    width: 90%;
-    color: #160f0f;
-    font-family: Arial, sans-serif;
-    justify-content: center;
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.02); opacity: 1; }
+}
+
+.credit {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #f8f8f8;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    opacity: 0.7;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #0f024d;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
 }
 
 .bright {
@@ -83,30 +104,45 @@ h2{
      font-size: 35px;
 }
 
-.calculator{
-    /* flex: 1; */
-    padding:30px;
-    background: #2c2c2c;
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    background: linear-gradient(145deg, #2c2c2c, #494949);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     width: 260px;
-    height:330px;
-    margin: auto;
+    max-width: 300px;
+    height: auto;
+    margin: 40px auto;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
 }
 
-.btn{
-    width: 55px;
-    height: 55px;
-    margin: 5px;
-    padding: 2px;
-    font-size: large;
-    background-color: #4a4a4b;
+
+.btn {
+    width: 55px; height: 55px; margin: 5px; padding: 2px;
+    font-size: 1.1rem;
+    background-color: #21212e;
     color: #ffffff;
-    border-radius: 8px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn:hover {
-    filter: brightness(1.2); /* Increase brightness by 20% */
-    cursor: pointer;
+    background-color: #5c5c5d;
+    transform: scale(1.05);
 }
+
+.btn:active {
+    background-color: #3a3a3b;
+    transform: scale(0.97);
+}
+
+
 .opt,
 .equal{
     background-color: #fa8c17;
