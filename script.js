@@ -82,6 +82,11 @@ function operate(value1, operator, value2 ) {
                         this.classList.remove("bright");
                     }, 200);   
 
+                if(this.classList.contains("point")){
+                    containerNum.textContent +=text; 
+
+                }
+
                 if(this.classList.contains("opt")){
                     console.log(operator);
                     value1 = operate(value1,operator,value2);
@@ -123,7 +128,8 @@ function operate(value1, operator, value2 ) {
                     //     return;
                     }
                         containerNum.textContent +=text; 
-                        value1 = containerNum.textContent;                                        /// value 1 
+                        value1 = containerNum.textContent;
+                        console.log(value1);                                        /// value 1 
                         value1 = parseInt(value1);
                     //     // console.log(value1);
                         return;
