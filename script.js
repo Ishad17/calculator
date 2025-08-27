@@ -3,10 +3,8 @@ console.log( "MY CALCULATOR!")
 function operate(value1, operator, value2 ) {
     
     if(!value2){
-        console.log("console !Value2")
-           return value1;
+          return value1;
         }
-
     if(operator == '+' ) {
         value1 = value1 + value2;
         return value1
@@ -20,14 +18,40 @@ function operate(value1, operator, value2 ) {
         value1 = value1 * value2;
         return value1;
     } 
-    if(operator == '÷' && value2 != 0) {
+    if(operator == '÷' && value1 != 0) {
         value1 = value2 / value1;
         return value1;
 
     }else if (operator == '÷' && value1 === 0){
-            return 'ERROR'
+            alert(`Don't ever try to divide by "0"`)
+            location.reload();
     }
 }
+    
+//     if(!value2){
+//           return value1;
+//         }
+//     if(operator == '+' ) {
+//         value1 = value1 + value2;
+//         return value1
+//     }else if(operator == '-'){
+//         value1 = value2 - value1;
+//         return value1;
+//     }else if(operator == '%') {
+//         value1 = value1 % value2;
+//         return value1;
+//     }else if(operator == '*') {
+//         value1 = value1 * value2;
+//         return value1;
+//     } 
+//     if(operator == '÷' && value2 != 0) {
+//         value1 = value2 / value1;
+//         return value1;
+
+//     }else if (operator == '÷' && value1 === 0){
+//             return 'ERROR'
+//     }
+// }
 
 // console.log(operate(80,'*',50));
 
@@ -45,9 +69,8 @@ function operate(value1, operator, value2 ) {
         let total;
         let equal = false;
         let operator2 = false;
-
-        console.log()
-
+        let operatorX;
+      
         buttons.forEach(button => 
             
             button.addEventListener("click", function() {
@@ -60,53 +83,57 @@ function operate(value1, operator, value2 ) {
                     }, 200);   
 
                 if(this.classList.contains("opt")){
+                    console.log(operator);
+                    value1 = operate(value1,operator,value2);
+
                     operator = text;
+                    // // console.log(operator);
                     containerOpt.textContent = text;
                     if(operator2){
                         return;
                     }
                     operator2 = true;
-              
                     if(equal){
                         containerOpt.textContent = text;
                         resultDisplay.innerHTML = `${value2}`;
                         operator2 = true;
                         return;
                     }
-                    containerOpt.textContent = text;
-                    value1 = operate(value1,operator,value2);
-                  
+                    // containerOpt.textContent = text;
+                    
                     resultDisplay.innerHTML = `${value1}`;
+                    
                     value2 = value1;
+
                     containerNum.innerHTML = "";
                     return
                  }
+                else if(this.classList.contains("num")){
 
-                if(this.classList.contains("num")){
+                    if(equal){
+                        console.log("are you mad?")
+                    }
                     operator2 = false;
                     equal = false;
                     if(operator){
-                        containerNum.textContent +=text; 
-                        value1 = containerNum.textContent;                                        /// value 1 
-                        value1 = parseInt(value1);
-                        console.log("value1 : " + value1);
-                        return;
+                    //     containerNum.textContent +=text; 
+                    //     value1 = containerNum.textContent;                                        /// value 1 
+                    //     value1 = parseInt(value1);
+                    //     // console.log("value1 : " + value1);
+                    //     return;
                     }
                         containerNum.textContent +=text; 
                         value1 = containerNum.textContent;                                        /// value 1 
                         value1 = parseInt(value1);
-                        console.log(value1);
+                    //     // console.log(value1);
                         return;
                 }
+                       
+                else if(this.classList.contains("equal")){
 
-                if(value1 && (this.classList.contains("opt"))){
-                         resultDisplay.innerHTML = `${value1}`;
-                         containerNum.innerHTML = "";
-                         return
-                }
-                            
-                if(this.classList.contains("equal")){
-                    if(equal){
+                    
+                    if(equal || operator2){
+                        containerOpt.innerHTML = ""; 
                         return;
                     }
                     equal = true;
@@ -117,11 +144,26 @@ function operate(value1, operator, value2 ) {
                     resultDisplay.innerHTML = `= ${value2}`;
                     operator = null;
                  }
-                 
-                if(this.classList.contains("clear") ){
+                else if(this.classList.contains("clear") ){
                             location.reload();
                 }
+                // else if(value1 && (this.classList.contains("opt"))){
+                //          resultDisplay.innerHTML = `${value1}`;
+                //          containerNum.innerHTML = "";
+                //                                  console.log("mmhm?");
+                //          return
+                // }   
+
+
+                if(this.classList.contains("test") ){
+                        console.log("~~~~~~~~~~Test results~~~~~~~~~");
+                        console.log("value1 : " + value1);
+                        console.log("value2 : " + value2);
+                        console.log("Operator2 : " + operator2);
+                        console.log("Operator : " + operator);
+                }
+                
                             
-                })                
+            })                
         );
 
