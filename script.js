@@ -60,10 +60,8 @@ function operate(value1, operator, value2 ) {
                     }, 200);   
 
                 if(this.classList.contains("opt")){
-                    
                     operator = text;
                     containerOpt.textContent = text;
-
                     if(operator2){
                         return;
                     }
@@ -87,8 +85,6 @@ function operate(value1, operator, value2 ) {
                 if(this.classList.contains("num")){
                     operator2 = false;
                     equal = false;
-
-                 
                     if(operator){
                         containerNum.textContent +=text; 
                         value1 = containerNum.textContent;                                        /// value 1 
@@ -96,32 +92,20 @@ function operate(value1, operator, value2 ) {
                         console.log("value1 : " + value1);
                         return;
                     }
-
                         containerNum.textContent +=text; 
                         value1 = containerNum.textContent;                                        /// value 1 
                         value1 = parseInt(value1);
                         console.log(value1);
-                        console.log("hello?");
                         return;
                 }
 
                 if(value1 && (this.classList.contains("opt"))){
-                         console.log('mmhm??');
                          resultDisplay.innerHTML = `${value1}`;
                          containerNum.innerHTML = "";
                          return
                 }
-
-                if(this.classList.contains("test") ){
-                        console.log("Test results");
-                        console.log("value1 : " + value1);
-                        console.log("value2 : " + value2);
-                        console.log("Operator2 : " + operator2);
-                        console.log("Operator : " + operator);
-                }
-                
+                            
                 if(this.classList.contains("equal")){
-
                     if(equal){
                         return;
                     }
@@ -137,22 +121,7 @@ function operate(value1, operator, value2 ) {
                 if(this.classList.contains("clear") ){
                             location.reload();
                 }
-                       
-                     // Revert after 200ms               
+                            
                 })                
         );
 
-
-        // operate(value1, operator, value2 )
-
-        
-//     window.addEventListener('DOMContentLoaded', () => {
-//     const sequence = ['btn-5', 'btn-0', 'btn-0', 'btn-add', 'btn-4', 'btn-0', 'btn-0' ,'btn-add','btn-sub',, 'btn-4', 'btn-0', 'btn-0' ,'btn-add'];
-
-//     sequence.forEach((id, index) => {
-//       setTimeout(() => {
-//         document.getElementById(id).click();
-//       }, index * 100); // delay between clicks for realism (300ms)
-//     });
-    
-//   });
