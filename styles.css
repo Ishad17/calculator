@@ -1,12 +1,12 @@
 body{
-    background-color: rgb(4, 17, 47);
+    background-color: rgb(216, 206, 185);
 }
 h2{
     display: flex;
     margin: auto;
     font-size: 3em;
     width: 90%;
-    color: #ffffff;
+    color: #160f0f;
     font-family: Arial, sans-serif;
     justify-content: center;
 }
@@ -14,7 +14,7 @@ h2{
 .bright {
   filter: brightness(1.4); /* 1 is normal, >1 is brighter */
   transition: filter 0.1s ease;
-  scale: 1.1;
+  scale: 1.05;
 }
 
 #display-container{
@@ -103,6 +103,10 @@ h2{
     border-radius: 8px;
 }
 
+.btn:hover {
+    filter: brightness(1.2); /* Increase brightness by 20% */
+    cursor: pointer;
+}
 .opt,
 .equal{
     background-color: #fa8c17;
@@ -124,8 +128,6 @@ h2{
             /* background-color: rgb(0, 0, 0); */
             color: #000412;
 }
-
-
 
 .value1{
     display: flex;
