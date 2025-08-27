@@ -80,14 +80,20 @@ function operate(value1, operator, value2 ) {
             button.addEventListener("click", function() {
                 
                 let text =  button.textContent;
+                let numdisplay = containerNum.textContent;
                              
                 this.classList.add("bright");
                     setTimeout(() => {
                         this.classList.remove("bright");
                     }, 200);   
 
-                if(this.classList.contains("point")){
+                if(this.classList.contains("del")){
+                    numdisplay = numdisplay.toString().slice(0, -1);
+                    containerNum.innerHTML = numdisplay; 
+                    console.log(numdisplay); 
+                }
 
+                if(this.classList.contains("point")){
                     if(point){
                         return;
                     }
