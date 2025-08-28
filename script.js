@@ -26,10 +26,20 @@ function operate(value1, operator, value2) {
         case 'x':
             return value1 * value2;
 
+        case '*':
+            return value1 * value2;
+
         case '%':
             return (value2 * value1) / 100;
 
-        case '÷':
+        case '÷' :
+            if (value1 === 0) {
+                showSharkAlert();
+                return; // stop execution
+            }
+            return value2 / value1;
+
+        case '/' :
             if (value1 === 0) {
                 showSharkAlert();
                 return; // stop execution
@@ -58,7 +68,7 @@ function operate(value1, operator, value2) {
         let equal = false;
         let operator2 = false;
         let operatorX;
-      
+
         buttons.forEach(button => 
 
 
@@ -66,7 +76,7 @@ function operate(value1, operator, value2) {
             button.addEventListener("click", function() {
                 
                 let text =  button.textContent;
-                let numdisplay = containerNum.textContent;
+                let numDisplay = containerNum.textContent;
                              
                 this.classList.add("bright");
                     setTimeout(() => {
@@ -74,9 +84,9 @@ function operate(value1, operator, value2) {
                     }, 200);   
 
                 if(this.classList.contains("del")){
-                    numdisplay = numdisplay.toString().slice(0, -1);
-                    containerNum.innerHTML = numdisplay; 
-                    console.log(numdisplay); 
+                    numDisplay = numDisplay.toString().slice(0, -1);
+                    containerNum.innerHTML = numDisplay; 
+                    console.log(numDisplay); 
                 }
 
                 if(this.classList.contains("point")){
@@ -120,7 +130,7 @@ function operate(value1, operator, value2) {
                  }
                 else if(this.classList.contains("num")){
 
-                    if(numdisplay.length >= 10){
+                    if(numDisplay.length >= 10){
                         return;
                     }
                     // if(equal){
@@ -138,7 +148,7 @@ function operate(value1, operator, value2) {
                     }
                         containerNum.textContent +=text; 
                         value1 = containerNum.textContent;
-                        console.log(value1);                                        /// value 1 
+                        // console.log(value1);                                        /// value 1 
                         value1 = Number(value1);
                     //     // console.log(value1);
                         return;
@@ -176,8 +186,11 @@ function operate(value1, operator, value2) {
                         console.log("~~Test results~~");
                         console.log("value1 : " + value1);
                         console.log("value2 : " + value2);
-                        console.log("Operator2 : " + operator2);
                         console.log("Operator : " + operator);
+                        console.log("equal : " + equal);
+                        console.log("Operator2 : " + operator2);
+                        
+                        
                 }
                 
                             
@@ -185,3 +198,101 @@ function operate(value1, operator, value2) {
         );
 
 
+    document.addEventListener("keydown", (event) => {
+
+        const allowedNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        const allowedOpt = ["+","-","x","/","%","*"];
+        // console.log("Key down:", event.key);
+
+        //  let text =  button.textContent;
+         let numDisplay = containerNum.textContent;
+
+        if(allowedNum.includes(event.key)) {
+             
+                if(numDisplay.length >= 10){
+                                return;
+                            }
+                operator2 = false;
+                equal = false;
+
+                // console.log('so?')
+                containerNum.textContent += event.key;  
+                value1 = containerNum.textContent;
+                // console.log(value1);                                        /// value 1 
+                value1 = Number(value1);
+                return;
+
+
+
+
+        }else if(event.key === "Backspace"){
+
+                 numDisplay = numDisplay.toString().slice(0, -1);
+                    containerNum.innerHTML = numDisplay; 
+                    console.log(numDisplay); 
+
+
+
+
+        }else if(event.key === "."){
+             if(point){
+                        return;
+                }
+                containerNum.textContent += event.key; 
+                point = true;
+                            console.log('yeah its me?')
+        }else if (allowedOpt.includes(event.key)){
+
+              if(value1 == undefined && value2 == undefined ){
+                        containerOpt.textContent = event.key;
+                        return
+                    }
+
+                    point = false;
+                    console.log(operator);
+                    value1 = operate(value1,operator,value2);
+                    console.log(value1);
+                    operator = event.key;
+                    // console.log(operator);
+                    containerOpt.textContent = event.key;
+                    if(operator2){
+                        return;
+                    }
+                    operator2 = true;
+
+                    if(equal){
+                        containerOpt.textContent = event.key;
+                        resultDisplay.innerHTML = `${value2}`;
+                        operator2 = true;
+                        return;
+                    }
+                    // containerOpt.textContent = text;
+                    resultDisplay.innerHTML = `${value1}`;                    
+                    value2 = value1;
+                    containerNum.innerHTML = "";
+                    return;
+        }else if(event.key === 'Enter' || event.key === '=' ){
+
+             if(equal || operator2){
+                        containerOpt.innerHTML = ""; 
+                        return;
+                    }
+                    equal = true;
+                    value2 = operate(value1,operator,value2);
+                    console.log(value2)
+                    containerNum.innerHTML = ""; 
+                    containerOpt.innerHTML = ""; 
+                    resultDisplay.innerHTML = `= ${value2}`;
+                    operator = null;
+
+        }else if(event.key === 't'){
+             console.log("~~Test results~~");
+                        console.log("value1 : " + value1);
+                        console.log("value2 : " + value2);
+                        console.log("Operator : " + operator);
+                        console.log("equal : " + equal);
+                        console.log("Operator2 : " + operator2);
+        }
+            
+
+    });
