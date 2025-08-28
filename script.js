@@ -1,5 +1,14 @@
 console.log( "MY CALCULATOR!")
 
+
+function showSharkAlert() {
+     document.getElementById('sharkAlert').style.display = 'flex';
+}
+
+    function reloadPage() {
+      location.reload();
+    }
+
 function operate(value1, operator, value2 ) {
     
     if(!value2){
@@ -24,9 +33,9 @@ function operate(value1, operator, value2 ) {
     if(operator == '÷' && value1 != 0) {
         value1 = value2 / value1;
         return value1;
-
-    }else if (operator == '÷' && value1 === 0){
-            alert(`EERRROORRRR!!!!!! Don't ever try to divide by "0"`)
+    }else if (operator === '÷' && value1 === 0){
+            
+            showSharkAlert();
             location.reload();
     }
 }
@@ -107,12 +116,13 @@ function operate(value1, operator, value2 ) {
                     value1 = operate(value1,operator,value2);
                     console.log(value1);
                     operator = text;
-                    // // console.log(operator);
+                    // console.log(operator);
                     containerOpt.textContent = text;
                     if(operator2){
                         return;
                     }
                     operator2 = true;
+
                     if(equal){
                         containerOpt.textContent = text;
                         resultDisplay.innerHTML = `${value2}`;
@@ -120,19 +130,18 @@ function operate(value1, operator, value2 ) {
                         return;
                     }
                     // containerOpt.textContent = text;
-                    
-                    resultDisplay.innerHTML = `${value1}`;
-                    
+                    resultDisplay.innerHTML = `${value1}`;                    
                     value2 = value1;
-
                     containerNum.innerHTML = "";
-                    return
+                    return;
                  }
                 else if(this.classList.contains("num")){
+
 
                     // if(equal){
                     //     console.log("are you mad?")
                     // }
+
                     operator2 = false;
                     equal = false;
                     if(operator){
