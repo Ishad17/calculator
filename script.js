@@ -1,3 +1,5 @@
+
+
 console.log( "MY CALCULATOR!")
 
 
@@ -29,14 +31,18 @@ function operate(value1, operator, value2 ) {
         value1 = value2 * value1/100;
         console.log(value1);
         return value1; 
+        return value1;
+    }else if(operator == '%'){
+        value1 = value2 * value1/100;
+        console.log(value1);
+        return value1; 
     } 
     if(operator == '÷' && value1 != 0) {
         value1 = value2 / value1;
         return value1;
     }else if (operator === '÷' && value1 === 0){
-            
             showSharkAlert();
-            location.reload();
+            
     }
 }
     
@@ -196,4 +202,5 @@ function operate(value1, operator, value2 ) {
                             
             })                
         );
+
 
