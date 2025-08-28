@@ -1,4 +1,15 @@
+
+
 console.log( "MY CALCULATOR!")
+
+
+function showSharkAlert() {
+     document.getElementById('sharkAlert').style.display = 'flex';
+}
+
+    function reloadPage() {
+      location.reload();
+    }
 
 function operate(value1, operator, value2 ) {
     
@@ -6,25 +17,26 @@ function operate(value1, operator, value2 ) {
           return value1;
         }
     if(operator == '+' ) {
+                console.log('percentage?')
         value1 = value1 + value2;
         return value1
     }else if(operator == '-'){
         value1 = value2 - value1;
         return value1;
-    }else if(operator == '%') {
-        value1 = value1 % value2;
-        return value1;
     }else if(operator == '*') {
         value1 = value1 * value2;
         return value1;
+    }else if(operator == '%'){
+        value1 = value2 * value1/100;
+        console.log(value1);
+        return value1; 
     } 
     if(operator == '÷' && value1 != 0) {
         value1 = value2 / value1;
         return value1;
-
-    }else if (operator == '÷' && value1 === 0){
-            alert(`Don't ever try to divide by "0"`)
-            location.reload();
+    }else if (operator === '÷' && value1 === 0){
+            showSharkAlert();
+            
     }
 }
     
@@ -67,6 +79,7 @@ function operate(value1, operator, value2 ) {
         let value2;
         let operator;
         let total;
+        let point;
         let equal = false;
         let operator2 = false;
         let operatorX;
@@ -76,23 +89,40 @@ function operate(value1, operator, value2 ) {
             button.addEventListener("click", function() {
                 
                 let text =  button.textContent;
+                let numdisplay = containerNum.textContent;
                              
                 this.classList.add("bright");
                     setTimeout(() => {
                         this.classList.remove("bright");
                     }, 200);   
 
+                if(this.classList.contains("del")){
+                    numdisplay = numdisplay.toString().slice(0, -1);
+                    containerNum.innerHTML = numdisplay; 
+                    console.log(numdisplay); 
+                }
+
+                if(this.classList.contains("point")){
+                    if(point){
+                        return;
+                    }
+                    containerNum.textContent +=text; 
+                    point = true;
+                }
+
                 if(this.classList.contains("opt")){
+                    point = false;
                     console.log(operator);
                     value1 = operate(value1,operator,value2);
-
+                    console.log(value1);
                     operator = text;
-                    // // console.log(operator);
+                    // console.log(operator);
                     containerOpt.textContent = text;
                     if(operator2){
                         return;
                     }
                     operator2 = true;
+
                     if(equal){
                         containerOpt.textContent = text;
                         resultDisplay.innerHTML = `${value2}`;
@@ -100,19 +130,18 @@ function operate(value1, operator, value2 ) {
                         return;
                     }
                     // containerOpt.textContent = text;
-                    
-                    resultDisplay.innerHTML = `${value1}`;
-                    
+                    resultDisplay.innerHTML = `${value1}`;                    
                     value2 = value1;
-
                     containerNum.innerHTML = "";
-                    return
+                    return;
                  }
                 else if(this.classList.contains("num")){
 
-                    if(equal){
-                        console.log("are you mad?")
-                    }
+
+                    // if(equal){
+                    //     console.log("are you mad?")
+                    // }
+
                     operator2 = false;
                     equal = false;
                     if(operator){
@@ -123,8 +152,9 @@ function operate(value1, operator, value2 ) {
                     //     return;
                     }
                         containerNum.textContent +=text; 
-                        value1 = containerNum.textContent;                                        /// value 1 
-                        value1 = parseInt(value1);
+                        value1 = containerNum.textContent;
+                        console.log(value1);                                        /// value 1 
+                        value1 = Number(value1);
                     //     // console.log(value1);
                         return;
                 }
@@ -156,7 +186,7 @@ function operate(value1, operator, value2 ) {
 
 
                 if(this.classList.contains("test") ){
-                        console.log("~~~~~~~~~~Test results~~~~~~~~~");
+                        console.log("~~Test results~~");
                         console.log("value1 : " + value1);
                         console.log("value2 : " + value2);
                         console.log("Operator2 : " + operator2);
@@ -166,4 +196,5 @@ function operate(value1, operator, value2 ) {
                             
             })                
         );
+
 

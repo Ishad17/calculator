@@ -171,3 +171,57 @@ h2 {
     font-weight: 600;
     color: rgb(156, 44, 44);
 }
+
+
+   /* Modal styles */
+    .shark-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 50, 0.85);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .shark-content {
+      background: #b91717;
+      color: #000000;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px #00f;
+      animation: shake 0.6s;
+    }
+
+    .shark-content img {
+      width: 200px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .shark-content button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      50% { transform: translateX(10px); }
+      75% { transform: translateX(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
