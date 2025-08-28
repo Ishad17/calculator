@@ -11,68 +11,37 @@ function showSharkAlert() {
       location.reload();
     }
 
-function operate(value1, operator, value2 ) {
-    
-    if(!value2){
-          return value1;
-        }
-    if(operator == '+' ) {
-                console.log('percentage?')
-        value1 = value1 + value2;
-        return value1
-    }else if(operator == '-'){
-        value1 = value2 - value1;
+function operate(value1, operator, value2) {
+    if (!value2) {
         return value1;
-    }else if(operator == '*') {
-        value1 = value1 * value2;
-        return value1;
-    }else if(operator == '%'){
+    }
 
-        value1 = value2 * value1/100;
-        console.log(value1);
-        return value1; 
-        return value1;
-    }else if(operator == '%'){
-        value1 = value2 * value1/100;
-        console.log(value1);
-        return value1; 
-    } 
-    if(operator == '÷' && value1 != 0) {
-        value1 = value2 / value1;
-        return value1;
-    }else if (operator === '÷' && value1 === 0){
-            showSharkAlert();
-            
+    switch (operator) {
+        case '+':
+            return value1 + value2;
+
+        case '-':
+            return value2 - value1;
+
+        case 'x':
+            return value1 * value2;
+
+        case '%':
+            return (value2 * value1) / 100;
+
+        case '÷':
+            if (value1 === 0) {
+                showSharkAlert();
+                return; // stop execution
+            }
+            return value2 / value1;
+
+        default:
+            console.error("Unknown operator:", operator);
+            return value1;
     }
 }
-    
-//     if(!value2){
-//           return value1;
-//         }
-//     if(operator == '+' ) {
-//         value1 = value1 + value2;
-//         return value1
-//     }else if(operator == '-'){
-//         value1 = value2 - value1;
-//         return value1;
-//     }else if(operator == '%') {
-//         value1 = value1 % value2;
-//         return value1;
-//     }else if(operator == '*') {
-//         value1 = value1 * value2;
-//         return value1;
-//     } 
-//     if(operator == '÷' && value2 != 0) {
-//         value1 = value2 / value1;
-//         return value1;
-
-//     }else if (operator == '÷' && value1 === 0){
-//             return 'ERROR'
-//     }
-// }
-
-// console.log(operate(80,'*',50));
-
+ 
         const buttons = document.querySelectorAll(".btn");
         const buttonsOperator = document.querySelectorAll(".opt");
         const buttonsNumber = document.querySelectorAll(".num");
