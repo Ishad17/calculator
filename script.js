@@ -13,7 +13,7 @@ function operate(value1, operator, value2) {
     if (!value2) {
         return value1;
     }
-    
+
     switch (operator) {
         case '+':
             return value1 + value2;
@@ -39,34 +39,7 @@ function operate(value1, operator, value2) {
             return value1;
     }
 }
-    
-//     if(!value2){
-//           return value1;
-//         }
-//     if(operator == '+' ) {
-//         value1 = value1 + value2;
-//         return value1
-//     }else if(operator == '-'){
-//         value1 = value2 - value1;
-//         return value1;
-//     }else if(operator == '%') {
-//         value1 = value1 % value2;
-//         return value1;
-//     }else if(operator == '*') {
-//         value1 = value1 * value2;
-//         return value1;
-//     } 
-//     if(operator == '÷' && value2 != 0) {
-//         value1 = value2 / value1;
-//         return value1;
-
-//     }else if (operator == '÷' && value1 === 0){
-//             return 'ERROR'
-//     }
-// }
-
-// console.log(operate(80,'*',50));
-
+ 
         const buttons = document.querySelectorAll(".btn");
         const buttonsOperator = document.querySelectorAll(".opt");
         const buttonsNumber = document.querySelectorAll(".num");
