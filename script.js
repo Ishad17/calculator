@@ -60,6 +60,8 @@ function operate(value1, operator, value2) {
         let operatorX;
       
         buttons.forEach(button => 
+
+
             
             button.addEventListener("click", function() {
                 
@@ -86,6 +88,12 @@ function operate(value1, operator, value2) {
                 }
 
                 if(this.classList.contains("opt")){
+
+                    if(value1 == undefined && value2 == undefined ){
+                        containerOpt.textContent = text;
+                        return
+                    }
+
                     point = false;
                     console.log(operator);
                     value1 = operate(value1,operator,value2);
@@ -112,7 +120,9 @@ function operate(value1, operator, value2) {
                  }
                 else if(this.classList.contains("num")){
 
-
+                    if(numdisplay.length >= 10){
+                        return;
+                    }
                     // if(equal){
                     //     console.log("are you mad?")
                     // }
@@ -136,7 +146,6 @@ function operate(value1, operator, value2) {
                        
                 else if(this.classList.contains("equal")){
 
-                    
                     if(equal || operator2){
                         containerOpt.innerHTML = ""; 
                         return;
@@ -149,8 +158,11 @@ function operate(value1, operator, value2) {
                     resultDisplay.innerHTML = `= ${value2}`;
                     operator = null;
                  }
-                else if(this.classList.contains("clear") ){
+                else if(this.classList.contains("clearA") ){
                             location.reload();
+                }
+                else if(this.classList.contains("clear")){
+                    containerNum.innerHTML = ""; 
                 }
                 // else if(value1 && (this.classList.contains("opt"))){
                 //          resultDisplay.innerHTML = `${value1}`;

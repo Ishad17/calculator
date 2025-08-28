@@ -71,12 +71,12 @@ h2 {
 }
 
 #result{
-       text-align: right;
+    text-align: right;
     font-size: 30px;color: rgba(4, 38, 82, 1);
 }
 
 #display-num{
-       text-align: right;
+     text-align: right;
      color: rgb(4, 38, 82);
      border-radius: 5px;
      display: flex;
@@ -129,9 +129,17 @@ h2 {
     font-size: 1.4rem;
 }
 
+#btn-per,
+#btn-clearA,
 #btn-clear{
-    background-color: rgb(225, 25, 25);
+    background-color: rgba(45, 70, 124, 0.966);
     color: white;
+}
+
+#btn-per:hover,
+#btn-clearA:hover,
+#btn-clear:hover {
+  background-color: rgba(65, 100, 170, 0.966); /* lighter shade */
 }
 
 .numbers{
